@@ -1,0 +1,19 @@
+config:
+  target: "http://localhost:5000"
+  phases:
+    - duration: 60
+      arrivalRate: 20
+  payload:
+    path: "./signup.csv"
+    fields:
+      - "email"
+      - "password"
+
+scenarios:
+  - name: "Signup users"
+    flow:
+      - post:
+          url: "/signup"
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
